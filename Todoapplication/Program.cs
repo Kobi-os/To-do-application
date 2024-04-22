@@ -9,26 +9,37 @@ namespace Todoapplication
 
         public static void Main(string[] args)
         {
-            AddTask(1, "Posprzątać pokój", "poodkurzać");
-            ShowAllTasks();
-        }
-
-        public static void AddTask(int id, string taskName, string taskDescription)
-        {
-            Console.WriteLine("The name of your task");
-            taskName = Console.ReadLine();
-            Console.WriteLine("Description of your task");
-            taskDescription = Console.ReadLine();
-            Task newTask = new Task(id, taskName, taskDescription);
-            AllTasks.Add(newTask);
-        }
-
-        public static void ShowAllTasks()
-        {
-            foreach (var task in AllTasks)
-            {
-                Console.WriteLine($"Id {task.Id} Nazwa {task.TaskName} Opis {task.TaskDescription}");
+            Console.WriteLine("Click 1. to Create Task");
+            Console.WriteLine("Click 2. to Add Task");
+            Console.WriteLine("Click 3. to Delete Task");
+            Console.WriteLine("Click 4. to exit the program");
+            List<string> tasks = new List<string>();
+            char exitKey = Console.ReadKey().KeyChar;
+            while (exitKey != '4')  { 
+                switch(exitKey)
+                {
+                    case '1':
+                        AddTask();
+                        break;
+                    case '2':
+/*                        AddTask();*/
+                        break;
+                }
             }
         }
+
+        public static void AddTask()
+        {
+            Console.WriteLine("The name of your task");
+            string taskName = Console.ReadLine();
+            Console.WriteLine("Description of your task");
+            string taskDescription = Console.ReadLine();
+        }
+
+        public static void DeleteTask()
+        {
+
+        }
+
     }
 }
