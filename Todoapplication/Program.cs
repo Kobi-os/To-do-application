@@ -5,15 +5,15 @@ namespace Todoapplication
 {
     internal class Program
     {
-        public static List<Task> AllTasks = new List<Task>();
+        public static List<string> tasks = new List<string>();
+
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Click 1. to Create Task");
-            Console.WriteLine("Click 2. to Add Task");
-            Console.WriteLine("Click 3. to Delete Task");
+            Console.WriteLine("Click 1. to Add Task");
+            Console.WriteLine("Click 2. to Delete Task");
+            Console.WriteLine("Click 3. to Show Tasks");
             Console.WriteLine("Click 4. to exit the program");
-            List<string> tasks = new List<string>();
             char exitKey = Console.ReadKey().KeyChar;
             while (exitKey != '4')  { 
                 switch(exitKey)
@@ -22,7 +22,11 @@ namespace Todoapplication
                         AddTask();
                         break;
                     case '2':
-/*                        AddTask();*/
+                        ShowTasks();
+                     
+                        break;
+                    case '3':
+/*                        ShowTasks();*/
                         break;
                 }
             }
@@ -32,8 +36,7 @@ namespace Todoapplication
         {
             Console.WriteLine("The name of your task");
             string taskName = Console.ReadLine();
-            Console.WriteLine("Description of your task");
-            string taskDescription = Console.ReadLine();
+            tasks.Add(taskName);
         }
 
         public static void DeleteTask()
@@ -41,5 +44,12 @@ namespace Todoapplication
 
         }
 
+        public static void ShowTasks()
+        {
+            foreach (var task in tasks)
+            {
+                Console.WriteLine($"Your tasks are {task}");
+            }
+        }
     }
 }
